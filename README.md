@@ -1,2 +1,2 @@
 # TodoList---A-demo-of-flux
-A simple implementation of Flux Todolist 
+用flux实现的一个简单的TodoList
