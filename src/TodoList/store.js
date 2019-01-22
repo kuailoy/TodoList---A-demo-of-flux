@@ -2,7 +2,7 @@
  * @Author: handing
  * @Date: 2019-01-21 17:11:31
  * @Last Modified by: handing
- * @Last Modified time: 2019-01-21 18:00:44
+ * @Last Modified time: 2019-01-22 15:34:49
  */
 import { ReduceStore } from 'flux/utils';
 import Dispatcher from './dispatcher';
@@ -49,18 +49,30 @@ class Store extends ReduceStore {
     console.log(action, 'store-reduce-action');
     switch(action.type) {
       case ActionTypes.ADD_TODO:
-        const { list = [] } = state;
-        const { payload } = action;
-        const nextList = list.concat({
-          id: state.nextId,
-          text: payload.text
-        });
-        const nextState = Object.assign({}, state, {
-          list: nextList,
-          nextId: state.nextId + 1
-        });
-        return nextState;
-
+        {
+          const { list = [] } = state;
+          const { payload } = action;
+          const nextList = list.concat({
+            id: state.nextId,
+            text: payload.text
+          });
+          return Object.assign({}, state, {
+            list: nextList,
+            nextId: state.nextId + 1
+          });
+        }
+      case ActionTypes.DELETE_TODO:
+        {
+          const { list = [] } = state;
+          const { payload } = action;
+          const nextList = list.filter((todoItem) => todoItem.id !== payload.id);
+          return Object.assign({}, state, {
+            list: nextList
+          })
+        }
+      default:
+        // 不是以上操作的返回原始state
+        return state;
     }
   }
 
