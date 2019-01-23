@@ -2,7 +2,7 @@
  * @Author: handing
  * @Date: 2019-01-21 17:11:19
  * @Last Modified by: handing
- * @Last Modified time: 2019-01-22 16:00:08
+ * @Last Modified time: 2019-01-23 15:37:29
  */
 
 import React, { Component, createRef } from 'react';
@@ -31,7 +31,6 @@ class TodoList extends Component {
 
   onStoreChange() {
     // 不需要关心Store具体的改变部分，而是更新整个Store的数据
-    console.log(this, 'this')
     this.setState({
       todoList: TodoStore.getState().list
     });
