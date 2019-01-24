@@ -2,7 +2,7 @@
  * @Author: handing
  * @Date: 2019-01-21 16:18:33
  * @Last Modified by: handing
- * @Last Modified time: 2019-01-21 17:08:23
+ * @Last Modified time: 2019-01-24 14:03:28
  */
 var path = require('path');
 var webpack = require('webpack');
@@ -11,7 +11,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: path.join(__dirname, './src/index')
+    dynamic: path.join(__dirname, './src/dynamic/index')
   },
   output: {
     path: path.join(__dirname, './dist'),
@@ -28,9 +28,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'dynamic.html',
       template: path.join(__dirname, './index.html'),
-      chunks: ['index']
+      chunks: ['dynamic']
     })
   ],
   resolve: {
