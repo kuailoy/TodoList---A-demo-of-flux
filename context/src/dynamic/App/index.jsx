@@ -1,6 +1,7 @@
 import React from 'react';
 import ThemedButton from "./ThemedButton";
 import { themes, ThemeContext } from './theme-context';
+import Layout from '../../Layout';
 
 // An intermediate component that uses the ThemeButton
 function ToolBar(props) {
@@ -29,14 +30,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout link={['nested', 'multiple']}>
         <ThemeContext.Provider value={this.state.theme}>
           <ToolBar changeTheme={this.toggleTheme} />
         </ThemeContext.Provider>
         <div>
           <ThemedButton>default button</ThemedButton>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
