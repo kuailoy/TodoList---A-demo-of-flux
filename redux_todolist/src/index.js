@@ -9,4 +9,4 @@ import ReactDOM from 'react-dom';
 
 import TodoList from './TodoList';
 
-// ReactDOM.render(<TodoList />, document.querySelector('#app'));
+ReactDOM.render(<TodoList />, document.querySelector('#app'));

@@ -2,7 +2,7 @@ import React from 'react';
 import TodoStore from './store';
 import Actions from './actions';
 
-class TodoList extends Component {
+class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,12 +30,12 @@ class TodoList extends Component {
     const text = this.$input.value;
     if (text.trim() !== '') {
       this.$input.value = '';
-      TodoStore.dispatch(Actions.addTodo(text))
+      TodoStore.dispatch(Actions.addTodo(text));
     }
   }
 
   deleteItem(id) {
-    console.log(id);
+    TodoStore.dispatch(Actions.deleteTodo(id));
   }
 
   render() {
