@@ -1,8 +1,8 @@
 import Dispatcher from './dispatcher';
 
 const ActionTypes = {
-  ADD_TODO: Symbol(),
-  DELETE_TODO: Symbol()
+  ADD_TODO: Symbol('add'),
+  DELETE_TODO: Symbol('del')
 };
 
 export {

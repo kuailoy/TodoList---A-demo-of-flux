@@ -1,6 +1,6 @@
-import ReduceStore from 'flux/utils';
+import { ReduceStore } from 'flux/utils';
 import Dispatcher from './dispatcher';
-import { ActionTypes } from './action'
+import { ActionTypes } from './actions'
 
 class Store extends ReduceStore {
   constructor() {
@@ -29,8 +29,9 @@ class Store extends ReduceStore {
 
   reduce(state, action) {
     switch(action.type) {
-      case ActionTypes.Add_TODO:
+      case ActionTypes.ADD_TODO:
       {
+        console.log('add')
         const { list, nextId } = state;
         const { payload: { text } } = action;
         const newList = [...list, {
@@ -40,10 +41,10 @@ class Store extends ReduceStore {
 
         return Object.assign({}, state, {
           list: newList,
-          nextId: ++nextId
+          nextId: nextId + 1
         });
       }
-      case ActionTypes.DELETE:
+      case ActionTypes.DELETE_TODO:
       {
         const { list, nextId } = state;
         const { payload: { id } } = action;
@@ -52,7 +53,12 @@ class Store extends ReduceStore {
           list: newList
         });
       }
+      default:
+      console.log('default')
+        return state;
     }
   }
 
 }
+
+export default new Store();
