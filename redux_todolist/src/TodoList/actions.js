@@ -1,20 +1,18 @@
 export const ActionTypes = {
-  ADD_TODO: 'ADD_TODO',
-  DELETE_TODO: 'DELETE_TODO'
-}
+  ADD_TODO: Symbol('add'),
+  DELETE_TODO: Symbol('del')
+};
 
 export default {
+
   addTodo: (text) => ({
     type: ActionTypes.ADD_TODO,
-      payload: {
-        text
-      }
-  })
-  ,
+    payload: { text }
+  }),
+
   deleteTodo: (id) => ({
     type: ActionTypes.DELETE_TODO,
-    payload: {
-      id
-    }
+    payload: { id }
   })
+
 }

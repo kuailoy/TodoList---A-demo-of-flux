@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TodoStore from './store';
 import Actions from './actions';
 
-class TodoList extends React.Component {
+class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,18 +43,19 @@ class TodoList extends React.Component {
       <div>
         <ul>
           {
-            this.state.list.map(item => (
-              <li key={item.id}>
-                {item.text}
-                <input type="checkbox" onChange={this.deleteItem.bind(this, item.id)} />
+            this.state.list && this.state.list.map(({text, id}) => (
+              <li key={id}>
+                <label>{text}</label>
+                <input type="checkbox" onChange={this.deleteItem.bind(this, id)} />
               </li>
             ))
           }
         </ul>
-        <div>
+        <p>
           <input ref={ref => this.$input = ref} />
-          <button onClick={this.addItem.bind(this)}>Add</button>
-        </div>
+          &nbsp;
+          <button onClick={this.addItem.bind(this)}>add</button>
+        </p>
       </div>
     );
   }

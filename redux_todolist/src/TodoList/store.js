@@ -2,8 +2,7 @@ import { createStore } from 'redux';
 import Reducer from './reducer';
 
 const initialState = {
-  list: [
-    {
+  list: [{
       id: 0,
       text: '吃饭'
     }, {
@@ -12,9 +11,8 @@ const initialState = {
     }, {
       id: 2,
       text: '睡觉'
-    }
-  ],
+    }],
   nextId: 3
-}
+};
 
 export default createStore(Reducer, initialState);

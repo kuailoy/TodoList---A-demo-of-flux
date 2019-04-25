@@ -1,32 +1,33 @@
-import { ActionTypes } from './actions'
+import { ActionTypes } from './actions';
 
-/**
- * @param {*} state
- * @param {*} action
- */
 export default (state, action) => {
   switch (action.type) {
     case ActionTypes.ADD_TODO: {
-      const { payload } = action;
-      const { list = [] } = state;
+      const { payload: { text } } = action;
+      const { list = [], nextId } = state;
+
       const newList = list.concat([{
-        id: state.nextId,
-        text: payload.text
+        id: nextId,
+        text
       }]);
+
       return Object.assign({}, state, {
         list: newList,
-        nextId: ++state.nextId
+        nextId: nextId + 1
       });
     }
 
     case ActionTypes.DELETE_TODO: {
-      const { payload } = action;
-      const { list =[] } = state;
-      const newList = list.filter(item => item.id !== payload.id);
+      const { payload: { id } } = action;
+      const { list = [] } = state;
+
+      const newList = list.filter(item => id !== item.id);
+
       return Object.assign({}, state, {
         list: newList
       });
     }
+
     default:
       return state;
   }
