@@ -2,11 +2,18 @@
  * @Author: handing
  * @Date: 2019-01-21 17:11:49
  * @Last Modified by: handing
- * @Last Modified time: 2019-02-25 16:18:23
+ * @Last Modified time: 2019-04-29 09:46:34
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import Store from './store';
 
-import TodoList from './TodoList';
+import App from 'components/app';
 
-ReactDOM.render(<TodoList />, document.querySelector('#app'));
+ReactDOM.render(
+  <Provider store={Store}>
+    <App />
+  </Provider>,
+  document.querySelector('#app')
+);
