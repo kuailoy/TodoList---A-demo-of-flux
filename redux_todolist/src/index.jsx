@@ -10,5 +10,5 @@ ReactDOM.render(
   <Provider store={Store}>
     <App />
   </Provider>,
-  document.querySelector('app')
+  document.querySelector('#app')
 );

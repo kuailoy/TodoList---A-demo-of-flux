@@ -8,10 +8,11 @@ class TodoList extends Component {
     return (
       <ul>
         {
-          todos.list.map(item => (
+          todos.map(item => (
             <TodoItem
               key={item.id}
               text={item.text}
+              done={item.done}
               onToggle={() => toggleTodo(item.id)}
               onDelete={() => deleteTodo(item.id)} />
           ))
@@ -23,8 +24,9 @@ class TodoList extends Component {
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    done: PropTypes.bool.isRequired
   })).isRequired,
   toggleTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired
