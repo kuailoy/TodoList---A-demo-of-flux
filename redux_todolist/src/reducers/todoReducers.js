@@ -1,23 +1,12 @@
-import { ActionTypes } from 'actions/todoActions';
+import { ActionTypes as TodoActionTypes } from 'actions/todoActions';
+import { ActionTypes as GetConfigActionTypes } from 'actions/getConfigActionTypes';
 
 export default (state = {
-  list: [{
-    id: 0,
-    text: 'Eating',
-    done: false
-  }, {
-    id: 1,
-    text: 'Drinking',
-    done: true
-  }, {
-    id: 2,
-    text: 'Sleeping',
-    done: false
-  }],
-  nextId: 3
+  list: [],
+  nextId: 0
 }, action) => {
   switch(action.type) {
-    case ActionTypes.ADD_TODO:
+    case TodoActionTypes.ADD_TODO:
       {
         const { payload } = action;
         const { list = [], nextId } = state;
@@ -32,7 +21,7 @@ export default (state = {
         });
       }
 
-      case ActionTypes.DELETE_TODO:
+      case TodoActionTypes.DELETE_TODO:
         {
           const { payload } = action;
           const { list = [] } = state;
@@ -42,7 +31,7 @@ export default (state = {
           });
         }
 
-      case ActionTypes.TOGGLE_TODO:
+      case TodoActionTypes.TOGGLE_TODO:
         {
           const { payload } = action;
           const { list = [] } = state;
@@ -51,6 +40,17 @@ export default (state = {
           }));
           return Object.assign({}, state, {
             list: nextList
+          });
+        }
+
+      case GetConfigActionTypes.REQUEST_SUCCESS:
+        {
+          const { payload } = action;
+          const { list =[] } = state;
+          const initState = payload.result;
+          return Object.assign({}, state, {
+            list: initState.list,
+            nextId: initState.nextId
           });
         }
 

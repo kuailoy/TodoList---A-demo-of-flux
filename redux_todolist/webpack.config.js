@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var devServerRouter = require('./stub');
 
 module.exports = {
   mode: 'development',
@@ -43,5 +44,14 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
+  },
+  devServer: {
+    before: function(app) {
+      for (var route in devServerRouter) {
+        app.get(route, function(req, res) {
+          res.json(devServerRouter[route])
+        });
+      }
+    }
   }
 }
