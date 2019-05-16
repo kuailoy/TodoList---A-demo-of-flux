@@ -1,12 +1,14 @@
-import ActionTypes from 'actions/getConfigActions';
+import { ActionTypes } from 'actions/getConfigActions';
 
 export default (state = {
   isLoading: false,
   isSuccess: false,
-  isFailure: false
+  isFail: false
 }, action) => {
+
   switch (action.type) {
     case ActionTypes.REQUEST_START:
+    console.log('reducer start')
       {
         return Object.assign({}, state, {
           isLoading: true,
@@ -17,6 +19,7 @@ export default (state = {
 
     case ActionTypes.REQUEST_SUCCESS:
       {
+        console.log('request reducer ')
         return Object.assign({}, state, {
           isLoading: false,
           isSuccess: true,
@@ -25,7 +28,7 @@ export default (state = {
       }
 
     case ActionTypes.REQUEST_FAILURE:
-      {
+      {console.log('reducer fail' )
         const { payload } = action;
         console.log(payload.error);
         return Object.assign({}, state, {

@@ -1,9 +1,10 @@
 import { ActionTypes as TodoActionTypes } from 'actions/todoActions';
-import { ActionTypes as GetConfigActionTypes } from 'actions/getConfigActionTypes';
+import { ActionTypes as GetConfigActionTypes } from 'actions/getConfigActions';
 
 export default (state = {
   list: [],
-  nextId: 0
+  nextId: 0,
+  filter: 'SHOW_TODO'
 }, action) => {
   switch(action.type) {
     case TodoActionTypes.ADD_TODO:
@@ -48,10 +49,12 @@ export default (state = {
           const { payload } = action;
           const { list =[] } = state;
           const initState = payload.result;
-          return Object.assign({}, state, {
+          const nextState =  Object.assign({}, state, {
             list: initState.list,
-            nextId: initState.nextId
+            nextId: initState.nextId,
+            filter: 'SHOW_TODO'
           });
+          return nextState;
         }
 
       default:

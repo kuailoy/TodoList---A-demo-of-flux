@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Store from './store';
 
-import App from 'components/app';
+// import App from 'components/app';
+import SmartApp from 'containers/smartApp';
 
 ReactDOM.render(
   <Provider store={Store}>
-    <App />
+    <SmartApp />
   </Provider>,
   document.querySelector('#app')
 );

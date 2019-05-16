@@ -30,7 +30,6 @@ const URL = '/getConfig';
 export default {
   loadInitData: () => async dispatch => {
     dispatch(requestStart());
-
     try {
       const res = await axios.get(URL);
       dispatch(requestSuccess(res.data));
