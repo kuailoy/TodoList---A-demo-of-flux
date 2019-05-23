@@ -28,7 +28,7 @@ export default (state = {
       }
 
     case ActionTypes.REQUEST_FAILURE:
-      {
+      {console.log('reducer fail' )
         const { payload } = action;
         console.log(payload.error);
         return Object.assign({}, state, {
