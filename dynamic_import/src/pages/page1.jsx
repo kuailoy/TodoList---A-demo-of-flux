@@ -1,0 +1,1 @@
+export default () => <div>page 1</div>

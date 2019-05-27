@@ -10,8 +10,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, './dist'),
-    fileName: '[name].min.js',
-    chunkName: '[name].chunk.js'
+    filename: '[name].min.js',
+    chunkFilename: '[name].chunk.js'
   },
   module: {
     rules: [
@@ -25,7 +25,7 @@ module.exports = {
       }
     ]
   },
-  plugin: [
+  plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(__dirname, 'index.html'),
