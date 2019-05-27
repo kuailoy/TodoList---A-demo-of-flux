@@ -1,36 +1,37 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
-    index: path.join(__dirname, './src/index')
+    index: path.join(__dirname, './src/index'),
   },
   output: {
     path: path.join(__dirname, './dist'),
-    filename: '[name].min.js'
+    fileName: '[name].min.js',
+    chunkName: '[name].chunk.js'
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.jsx?/,
+        loader: 'babel-loader'
       },
       {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
-      },
-
+      }
     ]
   },
-  plugins: [
+  plugin: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, './index.html'),
+      template: path.join(__dirname, 'index.html'),
       chunks: ['index']
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
