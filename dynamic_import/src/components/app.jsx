@@ -23,7 +23,7 @@ export default class App extends React.Component {
             },
             loading: Loading
         });
-        
+
         return (
             <div className="app">
                 <ul>
@@ -35,7 +35,7 @@ export default class App extends React.Component {
                     <Page />
                 </div>
             </div>
-            
+
         )
 
     }
