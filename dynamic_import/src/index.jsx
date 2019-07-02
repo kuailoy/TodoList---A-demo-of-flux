@@ -1,7 +1,20 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
-import App from 'components/app'
+import './index.less';
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+import store, { history } from './store';
+
+import App from 'components/app';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  document.querySelector('#app')
+);
