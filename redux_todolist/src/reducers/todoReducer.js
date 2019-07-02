@@ -42,9 +42,14 @@ export default (state = {
       });
     }
 
-    // case GetConfigActions.REQUEST_SUCCESS: {
-
-    // }
+    case GetConfigActions.REQUEST_SUCCESS: {
+      const { payload: { result } } = action;
+      
+      return Object.assign({}, state, {
+        list: result.list,
+        nextId: result.nextId
+      });
+    }
 
     default:
       return state;
