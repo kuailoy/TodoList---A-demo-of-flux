@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var devServerRouter = require('./stub');
 
 module.exports = {
   mode: 'development',
@@ -17,6 +18,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
       }
     ]
   },
@@ -28,10 +33,25 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'actions': path.resolve(__dirname, './src/actions'),
+      'components': path.resolve(__dirname, './src/components'),
+      'containers': path.resolve(__dirname, './src/containers'),
+      'reducers': path.resolve(__dirname, './src/reducers')
+    }
   },
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
+  },
+  devServer: {
+    before: function(app) {
+      for (var route in devServerRouter) {
+        app.get(route, function(req, res) {
+          res.json(devServerRouter[route]);
+        })
+      }
+    }
   }
 }

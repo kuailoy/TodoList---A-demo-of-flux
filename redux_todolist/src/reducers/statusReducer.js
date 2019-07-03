@@ -1,4 +1,4 @@
-import { ActionTypes } from "../actions/getConfigActions";
+import { ActionTypes } from 'actions/getConfigActions';
 
 export default (state = {
     isLoading: false,

@@ -26,7 +26,7 @@ const requestFailure = error => ({
   }
 })
 
-const URL = '/config';
+const URL = '/getConfig';
 
 /**
  * This action creater will return a function

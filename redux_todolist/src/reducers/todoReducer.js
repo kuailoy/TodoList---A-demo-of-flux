@@ -15,7 +15,8 @@ export default (state = {
           ...list,
           {
             id: nextId,
-            text: payload.text
+            text: payload.text,
+            completed: false
           }
         ],
         nextId: nextId + 1
@@ -44,7 +45,7 @@ export default (state = {
 
     case GetConfigActions.REQUEST_SUCCESS: {
       const { payload: { result } } = action;
-      
+
       return Object.assign({}, state, {
         list: result.list,
         nextId: result.nextId

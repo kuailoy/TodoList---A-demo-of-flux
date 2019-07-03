@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import './index.less';
 
 class TodoInput extends Component {
 
