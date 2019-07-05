@@ -1,3 +1,29 @@
-.completed {
-  text-decoration: line-through;
+.todo-item {
+  height: 48px;
+  line-height: 48px;
+  font-size: 24px;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  border-top: 1px solid #999;
+  &:hover {
+    background-color: #d9d9d9;
+  }
+  &.completed .text {
+    text-decoration: line-through;
+    color: #777;
+  }
+  .text {
+    flex: 1;
+    padding: 0 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .close {
+    float: right;
+    font-size: 14px;
+    color: #666;
+    padding: 0 10px;
+  }
 }

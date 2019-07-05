@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './index.less';
 
 const TodoSelector = ({ options, filter, onSelect }) => (
     <select className="filter-selector" value={filter} onChange={(e) => onSelect(e.target.value)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from '../TodoItem';
-
+import './index.less';
 
 const TodoList = ({ todos, deleteTodo, toggleTodo }) => (
   <ul className="todo-list">
