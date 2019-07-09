@@ -16,9 +16,9 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                excludes: /node_modules/,
+                exclude: /node_modules/,
                 loader: 'babel-loader'
-            }, 
+            },
             {
                 test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader'
@@ -26,8 +26,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlModulePlugin({
-            filename: 'index.html'
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: path.join(__dirname, './index.html'),
             chunks: ['index']
         })
