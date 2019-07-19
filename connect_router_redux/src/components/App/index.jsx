@@ -9,6 +9,7 @@ const sleep = (timeout = 3000) => new Promise((rs, rj) => {
   }, timeout);
 });
 
+@withRouter
 class App extends React.Component {
   render() {
     return (
