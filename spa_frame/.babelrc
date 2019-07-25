@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugin": [
+      "@babel/plugin-syntax-object-rest-spread",
+      "@babel/plugin-syntax-dynamic-import",
+      [
+          "@babel/plugin-proposal-decorators",
+          {
+              "legacy": true
+          }
+      ],
+      "@babel/plugin-proposal-class-properties"
+  ]
+}
