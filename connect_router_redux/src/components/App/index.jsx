@@ -10,7 +10,7 @@ const sleep = (timeout = 3000) => new Promise((rs, rj) => {
 });
 
 @withRouter
-class App extends React.PureComponent {
+class App extends React.Component {
   render() {
     return (
       <div id="app">
